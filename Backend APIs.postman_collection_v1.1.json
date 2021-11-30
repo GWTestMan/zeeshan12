@@ -1,0 +1,908 @@
+{
+	"info": {
+		"_postman_id": "79016f08-da5d-4bb1-b917-ae90a58632bb",
+		"name": "Backend APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Bearer Token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"c3a0d1eb-7a85-43e9-8a4c-fcfcd0c128e1\",\n    \"tenantId\": \"9b109f95-2b74-4be1-b99c-b1d8d898cf92\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/authenticate",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get refresh token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\"9b109f95-2b74-4be1-b99c-b1d8d898cf92\"",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/authenticate/refreshtoken",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"authenticate",
+						"refreshtoken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Designate Sidekick Meeting",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"userId\": \"7fe661e0-a49f-4ee5-918a-89b7484fed91\",\n        \"tenantId\": \"9b109f95-2b74-4be1-b99c-b1d8d898cf92\",\n        \"meetingId\": \"AAMkADc1YTU2NzAxLTNkN2EtNDBlMC1hZGIwLWYxYjFkNTY0MTBjYwBGAAAAAABRA4mYdyzyQZ79ZQ1TTgyEBwB2-mdmL6XKQ6n-naMjSzCkAAAAAAENAAB2-mdmL6XKQ6n-naMjSzCkAACFhzpVAAA=\",\n        \"recurrentMeeting\": false,\n        \"isParentMeeting\": false,\n        \"startDate\": 1621396800000\n    },\n    {\n        \"userId\": \"7fe661e0-a49f-4ee5-918a-89b7484fed91\",\n        \"tenantId\": \"9b109f95-2b74-4be1-b99c-b1d8d898cf92\",\n        \"meetingId\": \"AAMkADc1YTU2NzAxLTNkN2EtNDBlMC1hZGIwLWYxYjFkNTY0MTBjYwBGAAAAAABRA4mYdyzyQZ79ZQ1TTgyEBwB2-mdmL6XKQ6n-naMjSzCkAAAAAAENAAB2-mdmL6XKQ6n-naMjSzCkAAB8sSZ2AAA=\",\n        \"recurrentMeeting\": true,\n        \"isParentMeeting\": true,\n        \"startDate\": 1620349200000\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/meetingstab/designate",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"meetingstab",
+						"designate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Non Designate Sidekick meeting",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n\t{\n\t\t\"meetingId\": \"AAMkADc1YTU2NzAxLTNkN2EtNDBlMC1hZGIwLWYxYjFkNTY0MTBjYwBGAAAAAABRA4mYdyzyQZ79ZQ1TTgyEBwB2-mdmL6XKQ6n-naMjSzCkAAAAAAENAAB2-mdmL6XKQ6n-naMjSzCkAABuIQ_PAAA=\",\n\t\t\"tenantId\": \"9b109f95-2b74-4be1-b99c-b1d8d898cf92\",\n        \"startDateTime\": 1618281000000  \n\t},\n\t{\n\t\t\"meetingId\": \"AAMkADc1YTU2NzAxLTNkN2EtNDBlMC1hZGIwLWYxYjFkNTY0MTBjYwBGAAAAAABRA4mYdyzyQZ79ZQ1TTgyEBwB2-mdmL6XKQ6n-naMjSzCkAAAAAAENAAB2-mdmL6XKQ6n-naMjSzCkAACFhzpVAAA=\",\n\t\t\"tenantId\": \"9b109f95-2b74-4be1-b99c-b1d8d898cf92\",\n        \"startDateTime\": 1621396800000\n\t}\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/meetingstab/nondesignate",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"meetingstab",
+						"nondesignate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Soft Delete Meeting",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"meetingId\": \"AAMkADc1YTU2NzAxLTNkN2EtNDBlMC1hZGIwLWYxYjFkNTY0MTBjYwBGAAAAAABRA4mYdyzyQZ79ZQ1TTgyEBwB2-mdmL6XKQ6n-naMjSzCkAAAAAAENAAB2-mdmL6XKQ6n-naMjSzCkAACIu2mpAAA=\",\n        \"tenantId\": \"9b109f95-2b74-4be1-b99c-b1d8d898cf92\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/meetingstab",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"meetingstab"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Meeting Request (No Filter date range)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/meetingstab?tenantid=9b109f95-2b74-4be1-b99c-b1d8d898cf92&userid=7fe661e0-a49f-4ee5-918a-89b7484fed91&fromDateTime=0&toDateTime=0",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"meetingstab"
+					],
+					"query": [
+						{
+							"key": "tenantid",
+							"value": "9b109f95-2b74-4be1-b99c-b1d8d898cf92"
+						},
+						{
+							"key": "userid",
+							"value": "7fe661e0-a49f-4ee5-918a-89b7484fed91"
+						},
+						{
+							"key": "fromDateTime",
+							"value": "0"
+						},
+						{
+							"key": "toDateTime",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Non-Attendees",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cG4iOiJzaG9haWIuYWhtZWRAeGVrZXJhLmNvbSIsIm5iZiI6MTYyMjAyNTkyNiwiZXhwIjoxNjIyMDI2ODI2LCJpYXQiOjE2MjIwMjU5MjZ9.64tlCIP9sfhGJ5FI2U5wnaY_QS589oVyuk5Q8BXC4DM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "tenantId",
+						"value": "9b109f95-2b74-4be1-b99c-b1d8d898cf92",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "meetingId",
+						"value": "AAMkADc1YTU2NzAxLTNkN2EtNDBlMC1hZGIwLWYxYjFkNTY0MTBjYwBGAAAAAABRA4mYdyzyQZ79ZQ1TTgyEBwB2-mdmL6XKQ6n-naMjSzCkAAAAAAENAAB2-mdmL6XKQ6n-naMjSzCkAACIu2msAAA=",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{url}}/meetingstab/nonattendees?tenantId=9b109f95-2b74-4be1-b99c-b1d8d898cf92&meetingId=AAMkAGRmNzc1OGUyLTIzOGItNDkyOS1iYzkyLTcxNDRkYmEzNDA3NgBGAAAAAAArSEi4TFQuSb9f0DOasHVpBwB4UnsbOXoAQbSJmA3Q4Nv4AAAAAAENAAB4UnsbOXoAQbSJmA3Q4Nv4AABQpi01AAA=",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"meetingstab",
+						"nonattendees"
+					],
+					"query": [
+						{
+							"key": "tenantId",
+							"value": "9b109f95-2b74-4be1-b99c-b1d8d898cf92"
+						},
+						{
+							"key": "meetingId",
+							"value": "AAMkAGRmNzc1OGUyLTIzOGItNDkyOS1iYzkyLTcxNDRkYmEzNDA3NgBGAAAAAAArSEi4TFQuSb9f0DOasHVpBwB4UnsbOXoAQbSJmA3Q4Nv4AAAAAAENAAB4UnsbOXoAQbSJmA3Q4Nv4AABQpi01AAA="
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Assign Non-Attendees",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cG4iOiJzaG9haWIuYWhtZWRAeGVrZXJhLmNvbSIsIm5iZiI6MTYyMjAyNzMwOSwiZXhwIjoxNjIyMDI4MjA5LCJpYXQiOjE2MjIwMjczMDl9.bAcSYqdhz6jzZd7IQC84utrIvbGB0QjHIdf1Xm7P_t0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "tenantId",
+						"value": "9b109f95-2b74-4be1-b99c-b1d8d898cf92",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "meetingId",
+						"value": "AAMkADc1YTU2NzAxLTNkN2EtNDBlMC1hZGIwLWYxYjFkNTY0MTBjYwBGAAAAAABRA4mYdyzyQZ79ZQ1TTgyEBwB2-mdmL6XKQ6n-naMjSzCkAAAAAAENAAB2-mdmL6XKQ6n-naMjSzCkAACIu2msAAA=",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"meetingId\": \"AAMkAGRmNzc1OGUyLTIzOGItNDkyOS1iYzkyLTcxNDRkYmEzNDA3NgBGAAAAAAArSEi4TFQuSb9f0DOasHVpBwB4UnsbOXoAQbSJmA3Q4Nv4AAAAAAENAAB4UnsbOXoAQbSJmA3Q4Nv4AABQpi01AAA=\",\n        \"userId\": \"868db71a-b01f-43ca-b8df-7a3e8936026f\",\n        \"tenantId\": \"868db71a-b01f-43ca-b8df-7a3e8936026f\",\n        \"isFullAccess\": true\n    },\n    {\n        \"meetingId\": \"AAMkAGRmNzc1OGUyLTIzOGItNDkyOS1iYzkyLTcxNDRkYmEzNDA3NgBGAAAAAAArSEi4TFQuSb9f0DOasHVpBwB4UnsbOXoAQbSJmA3Q4Nv4AAAAAAENAAB4UnsbOXoAQbSJmA3Q4Nv4AABQpi01AAA=\",\n        \"userId\": \"d060ff29-bc32-49c5-a488-afd46eef8b9e\",\n        \"tenantId\": \"868db71a-b01f-43ca-b8df-7a3e8936026f\",\n        \"isFullAccess\": false\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/meetingstab/assignnonattendees",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"meetingstab",
+						"assignnonattendees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Meeting request (Only From Date)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/meetingstab?tenantid=9b109f95-2b74-4be1-b99c-b1d8d898cf92&userid=7fe661e0-a49f-4ee5-918a-89b7484fed91&fromDateTime=1623816000000&toDateTime=0",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"meetingstab"
+					],
+					"query": [
+						{
+							"key": "tenantid",
+							"value": "9b109f95-2b74-4be1-b99c-b1d8d898cf92"
+						},
+						{
+							"key": "userid",
+							"value": "7fe661e0-a49f-4ee5-918a-89b7484fed91"
+						},
+						{
+							"key": "fromDateTime",
+							"value": "1623816000000"
+						},
+						{
+							"key": "toDateTime",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Meeting Request (Date Range provided)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/meetingstab?tenantid=9b109f95-2b74-4be1-b99c-b1d8d898cf92&userid=7fe661e0-a49f-4ee5-918a-89b7484fed91&fromDateTime=1623816000000&toDateTime=1631799000000",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"meetingstab"
+					],
+					"query": [
+						{
+							"key": "tenantid",
+							"value": "9b109f95-2b74-4be1-b99c-b1d8d898cf92"
+						},
+						{
+							"key": "userid",
+							"value": "7fe661e0-a49f-4ee5-918a-89b7484fed91"
+						},
+						{
+							"key": "fromDateTime",
+							"value": "1623816000000"
+						},
+						{
+							"key": "toDateTime",
+							"value": "1631799000000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Meeting using GraphApi (Not Recurrent)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"meetingName\": \"Online Meeting using Graph api\",\n\t\"MeetingDescription\": \"An hour and 30 min long meeting\",\n\t\"userId\": \"7fe661e0-a49f-4ee5-918a-89b7484fed91\",\n\t\"meetingStartDateTime\": 1622314800000,\n\t\"meetingEndDateTime\": 1622320200000,\n\t\"recurrenceObject\": {\n\t\t\"recurrencePatternObj\": null,\n\t\t\"recurrenceRangeObj\": null\n\t},\n\t\"attendees\": [\n\t\t{\n\t\t\t\"name\": \"Dev\",\n\t\t\t\"email\": \"development@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Sheraz Siddiqui\",\n\t\t\t\"email\": \"sheraz.siddiqui@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Shoaib Ahmed\",\n\t\t\t\"email\": \"shoaib.ahmed@xekera.com\"\n\t\t}\n\t],\n\t\"sidekickMeeting\": true,\n\t\"tenantId\": \"9b109f95-2b74-4be1-b99c-b1d8d898cf92\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/meetingstab/createmeeting",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"meetingstab",
+						"createmeeting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recurrent Meeting - Weekly (EndDate)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n\t\"meetingName\": \"Graph Weekly Meeting\",\n\t\"MeetingDescription\": \"This is the meeting created using Graph API\",\n\t\"userId\": \"c3a0d1eb-7a85-43e9-8a4c-fcfcd0c128e1\",\n\t\"meetingStartDateTime\": 1621850400000,\n\t\"meetingEndDateTime\": 1621852200000,\n\t\"recurrenceObject\": {\n\t\t\"recurrencePatternObj\": {\n\t\t\t\"daysOfWeek\": [\n\t\t\t\t\"Monday\",\n\t\t\t\t\"Tuesday\"\n\t\t\t],\n\t\t\t\"firstDayOfWeek\": \"Sunday\",\n\t\t\t\"interval\": 1,\n\t\t\t\"type\": \"Weekly\"\n\t\t},\n\t\t\"recurrenceRangeObj\": {\n\t\t\t\"startDate\": 1621850400000,\n\t\t\t\"endDate\": 1624559400000,\n\t\t\t\"type\": \"EndDate\"\n\t\t}\n\t},\n\t\"attendees\": [\n\t\t{\n\t\t\t\"name\": \"Dev\",\n\t\t\t\"email\": \"development@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Sheraz Siddiqui\",\n\t\t\t\"email\": \"sheraz.siddiqui@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Shoaib Ahmed\",\n\t\t\t\"email\": \"shoaib.ahmed@xekera.com\"\n\t\t}\n\t],\n\t\"sidekickMeeting\": false,\n\t\"tenantId\": \"9b109f95-2b74-4be1-b99c-b1d8d898cf92\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/meetingstab/createmeeting",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"meetingstab",
+						"createmeeting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recurrent Meeting - Weekly (No End)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n\t\"meetingName\": \"Graph Weekly Meeting\",\n\t\"MeetingDescription\": \"This is the meeting created using Graph API\",\n\t\"userId\": \"7fe661e0-a49f-4ee5-918a-89b7484fed91\",\n\t\"meetingStartDateTime\": 1621850400000,\n\t\"meetingEndDateTime\": 1621852200000,\n\t\"recurrenceObject\": {\n\t\t\"recurrencePatternObj\": {\n\t\t\t\"daysOfWeek\": [\n\t\t\t\t\"Monday\",\n\t\t\t\t\"Tuesday\"\n\t\t\t],\n\t\t\t\"firstDayOfWeek\": \"Sunday\",\n\t\t\t\"interval\": 1,\n\t\t\t\"type\": \"Weekly\"\n\t\t},\n\t\t\"recurrenceRangeObj\": {\n\t\t\t\"startDate\": 1621850400000,\n\t\t\t\"endDate\": 0,\n\t\t\t\"type\": \"NoEnd\"\n\t\t}\n\t},\n\t\"attendees\": [\n\t\t{\n\t\t\t\"name\": \"Dev\",\n\t\t\t\"email\": \"development@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Sheraz Siddiqui\",\n\t\t\t\"email\": \"sheraz.siddiqui@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Shoaib Ahmed\",\n\t\t\t\"email\": \"shoaib.ahmed@xekera.com\"\n\t\t}\n\t],\n\t\"sidekickMeeting\": false,\n\t\"tenantId\": \"9b109f95-2b74-4be1-b99c-b1d8d898cf92\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/meetingstab/createmeeting",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"meetingstab",
+						"createmeeting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recurrent Meeting - Daily (No End)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cG4iOiJzaG9haWIuYWhtZWRAeGVrZXJhLmNvbSIsIm5iZiI6MTYyMjAxNTk5OCwiZXhwIjoxNjIyMDE2ODk4LCJpYXQiOjE2MjIwMTU5OTh9.My3MuH8ugnQqwSDE2kwis-WnCb39Cdo8O_BlzXW2GF8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n\t\"meetingName\": \"Another Standup Meeting\",\n\t\"MeetingDescription\": \"The meeting created by using Graph API\",\n\t\"userId\": \"7fe661e0-a49f-4ee5-918a-89b7484fed91\",\n\t\"meetingStartDateTime\": 1622440800000,\n\t\"meetingEndDateTime\": 1622442600000,\n\t\"recurrenceObject\": {\n\t\t\"recurrencePatternObj\": {\n\t\t\t\"daysOfWeek\": [],\n\t\t\t\"firstDayOfWeek\": null,\n\t\t\t\"interval\": 1,\n\t\t\t\"type\": \"Daily\"\n\t\t},\n\t\t\"recurrenceRangeObj\": {\n\t\t\t\"startDate\": 1622440800000,\n\t\t\t\"endDate\": 0,\n\t\t\t\"type\": \"NoEnd\"\n\t\t}\n\t},\n\t\"attendees\": [\n\t\t{\n\t\t\t\"name\": \"Dev\",\n\t\t\t\"email\": \"development@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Sheraz Siddiqui\",\n\t\t\t\"email\": \"sheraz.siddiqui@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Shoaib Ahmed\",\n\t\t\t\"email\": \"shoaib.ahmed@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Zeeshan Saleem\",\n\t\t\t\"email\": \"zeeshan.saleem@xekera.com\"\n\t\t}\n\t],\n\t\"sidekickMeeting\": true,\n\t\"tenantId\": \"9b109f95-2b74-4be1-b99c-b1d8d898cf92\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/meetingstab/createmeeting",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"meetingstab",
+						"createmeeting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recurrent Meeting - Daily (End Date)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cG4iOiJzaG9haWIuYWhtZWRAeGVrZXJhLmNvbSIsIm5iZiI6MTYyMjAxNTk5OCwiZXhwIjoxNjIyMDE2ODk4LCJpYXQiOjE2MjIwMTU5OTh9.My3MuH8ugnQqwSDE2kwis-WnCb39Cdo8O_BlzXW2GF8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n\t\"meetingName\": \"Sidekick Progress Meeting\",\n\t\"MeetingDescription\": \"The meeting created by using Graph API\",\n\t\"userId\": \"7fe661e0-a49f-4ee5-918a-89b7484fed91\",\n\t\"meetingStartDateTime\": 1622440800000,\n\t\"meetingEndDateTime\": 1622442600000,\n\t\"recurrenceObject\": {\n\t\t\"recurrencePatternObj\": {\n\t\t\t\"daysOfWeek\": [],\n\t\t\t\"firstDayOfWeek\": null,\n\t\t\t\"interval\": 1,\n\t\t\t\"type\": \"Daily\"\n\t\t},\n\t\t\"recurrenceRangeObj\": {\n\t\t\t\"startDate\": 1622440800000,\n\t\t\t\"endDate\": 1623265140000,\n\t\t\t\"type\": \"EndDate\"\n\t\t}\n\t},\n\t\"attendees\": [\n\t\t{\n\t\t\t\"name\": \"Dev\",\n\t\t\t\"email\": \"development@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Sheraz Siddiqui\",\n\t\t\t\"email\": \"sheraz.siddiqui@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Shoaib Ahmed\",\n\t\t\t\"email\": \"shoaib.ahmed@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Zeeshan Saleem\",\n\t\t\t\"email\": \"zeeshan.saleem@xekera.com\"\n\t\t}\n\t],\n\t\"sidekickMeeting\": true,\n\t\"tenantId\": \"9b109f95-2b74-4be1-b99c-b1d8d898cf92\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/meetingstab/createmeeting",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"meetingstab",
+						"createmeeting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recurrent Meeting - RelativeMonthly (EndDate)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cG4iOiJzaG9haWIuYWhtZWRAeGVrZXJhLmNvbSIsIm5iZiI6MTYyMjAyMjgyMSwiZXhwIjoxNjIyMDIzNzIxLCJpYXQiOjE2MjIwMjI4MjF9.y8QetJ2A6IJtWhw5a3WZOm87rV6-4xtPt37EJwO2rc8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"meetingName\": \"Project Demo Meeting\",\n\t\"MeetingDescription\": \"An hour and 30 min long Demo meeting created by using Graph API\",\n\t\"userId\": \"7fe661e0-a49f-4ee5-918a-89b7484fed91\",\n\t\"meetingStartDateTime\": 1623258000000,\n\t\"meetingEndDateTime\": 1623265140000,\n\t\"recurrenceObject\": {\n\t\t\"recurrencePatternObj\": {\n\t\t\t\"daysOfWeek\": [\n\t\t\t\t\"Wednesday\"\n\t\t\t],\n\t\t\t\"firstDayOfWeek\": null,\n\t\t\t\"interval\": 1,\n\t\t\t\"type\": \"relativeMonthly\",\n\t\t\t\"index\": \"third\"\n\t\t},\n\t\t\"recurrenceRangeObj\": {\n\t\t\t\"startDate\": 1623258000000,\n\t\t\t\"endDate\": 1625850000000,\n\t\t\t\"type\": \"EndDate\"\n\t\t}\n\t},\n\t\"attendees\": [\n\t\t{\n\t\t\t\"name\": \"Dev\",\n\t\t\t\"email\": \"development@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Sheraz Siddiqui\",\n\t\t\t\"email\": \"sheraz.siddiqui@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Shoaib Ahmed\",\n\t\t\t\"email\": \"shoaib.ahmed@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Zeeshan Saleem\",\n\t\t\t\"email\": \"zeeshan.saleem@xekera.com\"\n\t\t}\n\t],\n\t\"sidekickMeeting\": true,\n\t\"tenantId\": \"9b109f95-2b74-4be1-b99c-b1d8d898cf92\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/meetingstab/createmeeting",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"meetingstab",
+						"createmeeting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recurrent Meeting - RelativeMonthly (No End)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cG4iOiJzaG9haWIuYWhtZWRAeGVrZXJhLmNvbSIsIm5iZiI6MTYyMjAyMzA4NCwiZXhwIjoxNjIyMDIzOTg0LCJpYXQiOjE2MjIwMjMwODR9.Rphek40Xawj2o0RzGuOzAUHxMtcV9qlBGx6_Cj2qF5M",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"meetingName\": \"Relative Monthly No End\",\n\t\"MeetingDescription\": \"An hour and 30 min long Demo meeting created by using Graph API\",\n\t\"userId\": \"7fe661e0-a49f-4ee5-918a-89b7484fed91\",\n\t\"meetingStartDateTime\": 1623258000000,\n\t\"meetingEndDateTime\": 1623265140000,\n\t\"recurrenceObject\": {\n\t\t\"recurrencePatternObj\": {\n\t\t\t\"daysOfWeek\": [\n\t\t\t\t\"Wednesday\"\n\t\t\t],\n\t\t\t\"firstDayOfWeek\": null,\n\t\t\t\"interval\": 1,\n\t\t\t\"type\": \"relativeMonthly\",\n\t\t\t\"index\": \"third\"\n\t\t},\n\t\t\"recurrenceRangeObj\": {\n\t\t\t\"startDate\": 1623258000000,\n\t\t\t\"endDate\": 0,\n\t\t\t\"type\": \"NoEnd\"\n\t\t}\n\t},\n\t\"attendees\": [\n\t\t{\n\t\t\t\"name\": \"Dev\",\n\t\t\t\"email\": \"development@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Sheraz Siddiqui\",\n\t\t\t\"email\": \"sheraz.siddiqui@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Shoaib Ahmed\",\n\t\t\t\"email\": \"shoaib.ahmed@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Zeeshan Saleem\",\n\t\t\t\"email\": \"zeeshan.saleem@xekera.com\"\n\t\t}\n\t],\n\t\"sidekickMeeting\": true,\n\t\"tenantId\": \"9b109f95-2b74-4be1-b99c-b1d8d898cf92\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/meetingstab/createmeeting",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"meetingstab",
+						"createmeeting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recurrent Meeting - Absolute Monthly (No End)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cG4iOiJzaG9haWIuYWhtZWRAeGVrZXJhLmNvbSIsIm5iZiI6MTYyMjAyMzcxMSwiZXhwIjoxNjIyMDI0NjExLCJpYXQiOjE2MjIwMjM3MTF9.FUBkoEjvC9rRPIcm8SbeXBlauGirgVwzNX2Jex7OqyY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"meetingName\": \"Absolute Monthly No End\",\n\t\"MeetingDescription\": \"An hour and 30 min long Demo meeting created by using Graph API\",\n\t\"userId\": \"7fe661e0-a49f-4ee5-918a-89b7484fed91\",\n\t\"meetingStartDateTime\": 1622638800000,\n\t\"meetingEndDateTime\": 1622642400000,\n\t\"recurrenceObject\": {\n\t\t\"recurrencePatternObj\": {\n\t\t\t\"dayOfMonth\": 2,\n\t\t\t\"interval\": 1,\n\t\t\t\"type\": \"absoluteMonthly\"\n\t\t},\n\t\t\"recurrenceRangeObj\": {\n\t\t\t\"startDate\": 1622638800000,\n\t\t\t\"endDate\": 0,\n\t\t\t\"type\": \"NoEnd\"\n\t\t}\n\t},\n\t\"attendees\": [\n\t\t{\n\t\t\t\"name\": \"Dev\",\n\t\t\t\"email\": \"development@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Sheraz Siddiqui\",\n\t\t\t\"email\": \"sheraz.siddiqui@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Shoaib Ahmed\",\n\t\t\t\"email\": \"shoaib.ahmed@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Zeeshan Saleem\",\n\t\t\t\"email\": \"zeeshan.saleem@xekera.com\"\n\t\t}\n\t],\n\t\"sidekickMeeting\": true,\n\t\"tenantId\": \"9b109f95-2b74-4be1-b99c-b1d8d898cf92\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/meetingstab/createmeeting",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"meetingstab",
+						"createmeeting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recurrent Meeting - Absolute Monthly (End Date)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cG4iOiJzaG9haWIuYWhtZWRAeGVrZXJhLmNvbSIsIm5iZiI6MTYyMjAyMzk1OSwiZXhwIjoxNjIyMDI0ODU5LCJpYXQiOjE2MjIwMjM5NTl9.fVi2AMDXIsBKXhPD4gO5ZXi_94WwgRXJGG8OdW7z9PM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"meetingName\": \"Absolut Monthly No End\",\n\t\"MeetingDescription\": \"An hour and 30 min long Demo meeting created by using Graph API\",\n\t\"userId\": \"c3a0d1eb-7a85-43e9-8a4c-fcfcd0c128e1\",\n\t\"meetingStartDateTime\": 1622638800000,\n\t\"meetingEndDateTime\": 1622642400000,\n\t\"recurrenceObject\": {\n\t\t\"recurrencePatternObj\": {\n\t\t\t\"dayOfMonth\": 2,\n\t\t\t\"interval\": 1,\n\t\t\t\"type\": \"absoluteMonthly\"\n\t\t},\n\t\t\"recurrenceRangeObj\": {\n\t\t\t\"startDate\": 1622638800000,\n\t\t\t\"endDate\": 1625238000000,\n\t\t\t\"type\": \"EndDate\"\n\t\t}\n\t},\n\t\"attendees\": [\n\t\t{\n\t\t\t\"name\": \"Dev\",\n\t\t\t\"email\": \"development@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Sheraz Siddiqui\",\n\t\t\t\"email\": \"sheraz.siddiqui@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Shoaib Ahmed\",\n\t\t\t\"email\": \"shoaib.ahmed@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Zeeshan Saleem\",\n\t\t\t\"email\": \"zeeshan.saleem@xekera.com\"\n\t\t}\n\t],\n\t\"sidekickMeeting\": true,\n\t\"tenantId\": \"9b109f95-2b74-4be1-b99c-b1d8d898cf92\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/meetingstab/createmeeting",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"meetingstab",
+						"createmeeting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recurrent Meeting - Absolute Yearly (End Date)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cG4iOiJzaG9haWIuYWhtZWRAeGVrZXJhLmNvbSIsIm5iZiI6MTYyMjAyNDQyNSwiZXhwIjoxNjIyMDI1MzI1LCJpYXQiOjE2MjIwMjQ0MjV9.dI62wkn43WFORpi7FZnAcDygV5NeewVjNfis7EQa1Xo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"meetingName\": \"ABS Yearly\",\n\t\"MeetingDescription\": \"An hour and 30 min long Demo meeting created by using Graph API\",\n\t\"userId\": \"7fe661e0-a49f-4ee5-918a-89b7484fed91\",\n\t\"meetingStartDateTime\": 1622646000000,\n\t\"meetingEndDateTime\": 1622649600000,\n\t\"recurrenceObject\": {\n\t\t\"recurrencePatternObj\": {\n            \"month\": 6,\n\t\t\t\"dayOfMonth\": 3,\n\t\t\t\"interval\": 1,\n\t\t\t\"type\": \"absoluteYearly\"\n\t\t},\n\t\t\"recurrenceRangeObj\": {\n\t\t\t\"startDate\": 1622646000000,\n\t\t\t\"endDate\": 1654186200000,\n\t\t\t\"type\": \"EndDate\"\n\t\t}\n\t},\n\t\"attendees\": [\n\t\t{\n\t\t\t\"name\": \"Dev\",\n\t\t\t\"email\": \"development@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Sheraz Siddiqui\",\n\t\t\t\"email\": \"sheraz.siddiqui@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Shoaib Ahmed\",\n\t\t\t\"email\": \"shoaib.ahmed@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Zeeshan Saleem\",\n\t\t\t\"email\": \"zeeshan.saleem@xekera.com\"\n\t\t}\n\t],\n\t\"sidekickMeeting\": true,\n\t\"tenantId\": \"9b109f95-2b74-4be1-b99c-b1d8d898cf92\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/meetingstab/createmeeting",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"meetingstab",
+						"createmeeting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recurrent Meeting - Absolute Yearly (NO End)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cG4iOiJzaG9haWIuYWhtZWRAeGVrZXJhLmNvbSIsIm5iZiI6MTYyMjAyNDQyNSwiZXhwIjoxNjIyMDI1MzI1LCJpYXQiOjE2MjIwMjQ0MjV9.dI62wkn43WFORpi7FZnAcDygV5NeewVjNfis7EQa1Xo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"meetingName\": \"ABS Yearly NoEnd\",\n\t\"MeetingDescription\": \"An hour and 30 min long Demo meeting created by using Graph API\",\n\t\"userId\": \"7fe661e0-a49f-4ee5-918a-89b7484fed91\",\n\t\"meetingStartDateTime\": 1622646000000,\n\t\"meetingEndDateTime\": 1622649600000,\n\t\"recurrenceObject\": {\n\t\t\"recurrencePatternObj\": {\n            \"month\": 6,\n\t\t\t\"dayOfMonth\": 3,\n\t\t\t\"interval\": 1,\n\t\t\t\"type\": \"absoluteYearly\"\n\t\t},\n\t\t\"recurrenceRangeObj\": {\n\t\t\t\"startDate\": 1622646000000,\n\t\t\t\"endDate\": 0,\n\t\t\t\"type\": \"NoEnd\"\n\t\t}\n\t},\n\t\"attendees\": [\n\t\t{\n\t\t\t\"name\": \"Dev\",\n\t\t\t\"email\": \"development@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Sheraz Siddiqui\",\n\t\t\t\"email\": \"sheraz.siddiqui@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Shoaib Ahmed\",\n\t\t\t\"email\": \"shoaib.ahmed@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Zeeshan Saleem\",\n\t\t\t\"email\": \"zeeshan.saleem@xekera.com\"\n\t\t}\n\t],\n\t\"sidekickMeeting\": true,\n\t\"tenantId\": \"9b109f95-2b74-4be1-b99c-b1d8d898cf92\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/meetingstab/createmeeting",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"meetingstab",
+						"createmeeting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recurrent Meeting - Relative Yearly (No End)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"meetingName\": \"Relative Yearly No End\",\n\t\"MeetingDescription\": \"An hour and 30 min long Demo meeting created by using Graph API\",\n\t\"userId\": \"7fe661e0-a49f-4ee5-918a-89b7484fed91\",\n\t\"meetingStartDateTime\": 1623816000000,\n\t\"meetingEndDateTime\": 1623821400000,\n\t\"recurrenceObject\": {\n\t\t\"recurrencePatternObj\": {\n            \"month\": 6,\n\t\t\t\"daysOfWeek\": [\n\t\t\t\t\"Wednesday\"\n\t\t\t],\n\t\t\t\"interval\": 1,\n\t\t\t\"type\": \"relativeYearly\"\n\t\t},\n\t\t\"recurrenceRangeObj\": {\n\t\t\t\"startDate\": 1623816000000,\n\t\t\t\"endDate\": 0,\n\t\t\t\"type\": \"NoEnd\"\n\t\t}\n\t},\n\t\"attendees\": [\n\t\t{\n\t\t\t\"name\": \"Dev\",\n\t\t\t\"email\": \"development@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Sheraz Siddiqui\",\n\t\t\t\"email\": \"sheraz.siddiqui@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Shoaib Ahmed\",\n\t\t\t\"email\": \"shoaib.ahmed@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Zeeshan Saleem\",\n\t\t\t\"email\": \"zeeshan.saleem@xekera.com\"\n\t\t}\n\t],\n\t\"sidekickMeeting\": true,\n\t\"tenantId\": \"9b109f95-2b74-4be1-b99c-b1d8d898cf92\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/meetingstab/createmeeting",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"meetingstab",
+						"createmeeting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recurrent Meeting - Relative Yearly (End Date)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"meetingName\": \"Relative Yearly End Date\",\n\t\"MeetingDescription\": \"An hour and 30 min long Demo meeting created by using Graph API\",\n\t\"userId\": \"7fe661e0-a49f-4ee5-918a-89b7484fed91\",\n\t\"meetingStartDateTime\": 1623816000000,\n\t\"meetingEndDateTime\": 1623821400000,\n\t\"recurrenceObject\": {\n\t\t\"recurrencePatternObj\": {\n            \"month\": 3,\n\t\t\t\"daysOfWeek\": [\n\t\t\t\t\"Wednesday\"\n\t\t\t],\n\t\t\t\"interval\": 1,\n\t\t\t\"type\": \"relativeMonthly\"\n\t\t},\n\t\t\"recurrenceRangeObj\": {\n\t\t\t\"startDate\": 1623816000000,\n\t\t\t\"endDate\": 1631799000000,\n\t\t\t\"type\": \"EndDate\"\n\t\t}\n\t},\n\t\"attendees\": [\n\t\t{\n\t\t\t\"name\": \"Dev\",\n\t\t\t\"email\": \"development@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Sheraz Siddiqui\",\n\t\t\t\"email\": \"sheraz.siddiqui@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Shoaib Ahmed\",\n\t\t\t\"email\": \"shoaib.ahmed@xekera.com\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Zeeshan Saleem\",\n\t\t\t\"email\": \"zeeshan.saleem@xekera.com\"\n\t\t}\n\t],\n\t\"sidekickMeeting\": true,\n\t\"tenantId\": \"9b109f95-2b74-4be1-b99c-b1d8d898cf92\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/meetingstab/createmeeting",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"meetingstab",
+						"createmeeting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Meeting Summary",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cG4iOiJTaG9haWIuQWhtZWRAc2lkZWtpY2suY29tIiwibmJmIjoxNjIyNjE1ODQ5LCJleHAiOjE2MjI2MTY3NDksImlhdCI6MTYyMjYxNTg0OX0.jmSROvWOIk-s97BlcmdZ9Y0GsKxBliB9utxTCxWmI7I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/meetingsManager/summary?MeetingId=AAMkADc1YTU2NzAxLTNkN2EtNDBlMC1hZGIwLWYxYjFkNTY0MTBjYwBGAAAAAABRA4mYdyzyQZ79ZQ1TTgyEBwB2-mdmL6XKQ6n-naMjSzCkAAAAAAENAAB2-mdmL6XKQ6n-naMjSzCkAACIu2nIAAA=",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"meetingsManager",
+						"summary"
+					],
+					"query": [
+						{
+							"key": "MeetingId",
+							"value": "AAMkADc1YTU2NzAxLTNkN2EtNDBlMC1hZGIwLWYxYjFkNTY0MTBjYwBGAAAAAABRA4mYdyzyQZ79ZQ1TTgyEBwB2-mdmL6XKQ6n-naMjSzCkAAAAAAENAAB2-mdmL6XKQ6n-naMjSzCkAACIu2nIAAA="
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Meeting Summary",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cG4iOiJTaG9haWIuQWhtZWRAc2lkZWtpY2suY29tIiwibmJmIjoxNjIyNTQ4NTQxLCJleHAiOjE2MjI1NDk0NDEsImlhdCI6MTYyMjU0ODU0MX0.rjfd6KOSIBHqedsD1fYpqZF_2u6d4K1-9fAehMeAdRo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"TenantId\": \"9b109f95-2b74-4be1-b99c-b1d8d898cf92\",\n    \"MeetingSummary\": \"Lorem ipsum is the dummy text!\",\n    \"MeetingId\": \"AAMkADc1YTU2NzAxLTNkN2EtNDBlMC1hZGIwLWYxYjFkNTY0MTBjYwBGAAAAAABRA4mYdyzyQZ79ZQ1TTgyEBwB2-mdmL6XKQ6n-naMjSzCkAAAAAAENAAB2-mdmL6XKQ6n-naMjSzCkAACIu2nIAAA=\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/meetingsManager/summary",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"meetingsManager",
+						"summary"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://localhost:5001/api"
+		}
+	]
+}
